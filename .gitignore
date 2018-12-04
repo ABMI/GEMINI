@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ################
+=======
+﻿################
+>>>>>>> 838f8f9... GEMINI for package
 # 제외할 확장자#
 *.txt
 *.RData
@@ -8,11 +12,18 @@
 *.cfg
 *.md
 *.rds
+<<<<<<< HEAD
+=======
+*.gz
+>>>>>>> 838f8f9... GEMINI for package
 
 ############
 # 제외 폴더#
 images/
+<<<<<<< HEAD
 Packages/
+=======
+>>>>>>> 838f8f9... GEMINI for package
 Standard RDS/
 Target RDS/
 
@@ -20,3 +31,7 @@ Target RDS/
 #제외 파일#
 .Rhistory
 R/.Rhistory
+<<<<<<< HEAD
+=======
+.Rproj.user
+>>>>>>> 838f8f9... GEMINI for package
