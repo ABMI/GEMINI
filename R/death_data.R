@@ -9,8 +9,7 @@ source("gemini.r")
 #' This function for extract data from death table
 #' @keywords gemini
 #' @export
-#' @example
-#' death_data()
+#'
 death_data <- function(){
 >>>>>>> 838f8f9... GEMINI for package
 ################################################################################

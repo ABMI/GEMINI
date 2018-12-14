@@ -9,8 +9,7 @@ source("gemini.r")
 #' This function extract data from person table
 #' @keywords gemini
 #' @export
-#' @example
-#' person_data()
+#'
 person_data <- function(){
 >>>>>>> 838f8f9... GEMINI for package
 ################################################################################

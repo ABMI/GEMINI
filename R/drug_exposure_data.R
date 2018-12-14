@@ -13,8 +13,7 @@ tryCatch(drug_exptbl_record <- get_total_records("drug_exposure")
 #' This function extract data from drug exposure table
 #' @keywords gemini
 #' @export
-#' @example
-#' drug_exposure_data()
+#'
 drug_exposure_data <- function(){
 ################################################################################
 # Get data from drug_exposure_id

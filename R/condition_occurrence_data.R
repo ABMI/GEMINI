@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 ################################################################################
 # Loading Function
 ################################################################################
@@ -9,12 +10,14 @@ source("gemini.r")
 tryCatch(conditiontbl_record <- get_total_records("condition_occurrence")
 =======
 #' Condition_occurrence_data
+=======
+#' Condition occurrence data
+>>>>>>> 9125cc6... Fixed package error
 #'
 #' This function extract data from condition occurrence table
 #' @keywords gemini
 #' @export
-#' @example
-#' condition_occurrence_data()
+#'
 condition_occurrence_data <- function(){
 ################################################################################
 # Get data from condition_occurrence_id

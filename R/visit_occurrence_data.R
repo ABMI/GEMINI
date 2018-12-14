@@ -9,8 +9,7 @@ source("gemini.r")
 #' This function extract data from visit occurrence table
 #' @keywords gemini
 #' @export
-#' @example
-#' visit_occurrence_data()
+#'
 visit_occurrence_data <- function(){
 >>>>>>> 838f8f9... GEMINI for package
 ################################################################################
