@@ -18,12 +18,16 @@ death_data <- function(){
 ################################################################################
 tryCatch({
 <<<<<<< HEAD
+<<<<<<< HEAD
   sql <- paste0("select attribute_name, ROUND(count(attribute_name)*100/convert(float,(select count(*) from @cdm_database_schema.death)),1) as ratio 
 =======
   sql <<- paste0("select attribute_name, ROUND(count(attribute_name)*100/convert(float,(select count(*) from @cdm_database_schema.death)),1) as ratio
 >>>>>>> 838f8f9... GEMINI for package
+=======
+  sql <<- paste0("select attribute_name, ROUND(count(attribute_name)*100/convert(float,(select count(distinct person_id) from @cdm_database_schema.death)),1) as ratio
+>>>>>>> db02257... Death table pieplot invalid code fixed
         from (select count(death_date) as attribute_name from @cdm_database_schema.death group by person_id)
-              AS death_date_temp group by attribute_name")
+              AS death_date_temp group by attribute_name order by attribute_name")
   deathtbl_check <<- queryRender(sql)
   # sql <- SqlRender::renderSql(sql, cdm_database_schema = cdmDatabaseSchema)$sql
   # sql <- SqlRender::translateSql(sql, targetDialect = attr(connection, "dbms"))$sql
