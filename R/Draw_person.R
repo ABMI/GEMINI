@@ -69,12 +69,6 @@ tryCatch({
     compared_female_min_ratio <<- tar_persontbl_min_age$ratio[tar_persontbl_min_age$genderConceptId == "8532"]
     # Set label which got more long length
     min_lbl <<- union(std_persontbl_min_age$ageRange,std_persontbl_max_age$ageRange)
-    # if (length(std_persontbl_min_age$ageRange[std_persontbl_min_age$genderConceptId == "8507"])
-    #     > length(tar_persontbl_min_age$ageRange[tar_persontbl_min_age$genderConceptId == "8507"])) {
-    #     x_min_lbl <<- std_persontbl_min_age$ageRange[std_persontbl_min_age$genderConceptId == "8507"]
-    # } else {
-    #     x_min_lbl <<- tar_persontbl_min_age$ageRange[tar_persontbl_min_age$genderConceptId == "8507"]
-    # }
     # Draw line Graph
     plot(male_min_ratio,
          type = "p", pch = 19, col = 4, cex = 2, xlab = "AGE_RANGE", ylab = "GENDER_RATIO(%)", axes = F,
