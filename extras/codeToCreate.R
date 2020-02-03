@@ -1,18 +1,18 @@
 # CodeToRun
-usethis::edit_r_environ() ## edit ID/PW
-
+#usethis::edit_r_environ() ## edit ID/PW
+### work_dir <- readline(prompt="Enter work_dir: ")
 ##16호 AUSOM-----------------------------------------------------------------------------------------
 connectionDetails <- DatabaseConnector::createConnectionDetails(dbms = 'sql server',
                                                                 server = Sys.getenv("server_ip_16"),
-                                                                user = Sys.getenv("USER_ID"),
-                                                                password = Sys.getenv("PASSWORD"),
+                                                                user = Sys.getenv("chungsu_ID"),
+                                                                password = Sys.getenv("chungsu_pW"),
                                                                 schema = Sys.getenv("AUSOMv5_3"))
 create_rds(connectionDetails)
 ##16호 AUSOM-----------------------------------------------------------------------------------------
 connectionDetails <- DatabaseConnector::createConnectionDetails(dbms = 'sql server',
                                                                 server = Sys.getenv("server_ip_16"),
-                                                                user = Sys.getenv("USER_ID"),
-                                                                password = Sys.getenv("PASSWORD"),
+                                                                user = Sys.getenv("chungsu_ID"),
+                                                                password = Sys.getenv("chungsu_pW"),
                                                                 schema = Sys.getenv("AUSOMv5_3_1"))
 create_rds(connectionDetails)
 ##17호 CDMPv1----------------------------------------------------------------------------------------
@@ -44,5 +44,5 @@ connectionDetails <- DatabaseConnector::createConnectionDetails(dbms = 'sql serv
                                                                 schema = Sys.getenv("ICARUS"))
 create_rds(connectionDetails)
 
-gemini::gemini(dbCount=10)
+gemini::gemini(dbCount=2)
 
