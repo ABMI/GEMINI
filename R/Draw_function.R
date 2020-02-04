@@ -348,11 +348,55 @@ draw_visit_freq_graph <- function(dbName, rds, type){
     standard <- which(sapply(rds, function(x){length(x$persontbl_min_age$ageRange)}) ==
                           max(sapply(rds, function(x){length(x$persontbl_min_age$ageRange)})))[1]
     xax <- rds[[standard]]$persontbl_min_age[rds[[standard]]$persontbl_min_age$genderConceptId == '8507',]$ageRange
+    # sapply(rds, function(x){
+    #     person_minage <-x[[i]]$persontbl_min_age
+    #     uniq_person_age <- unique(person_minage$ageRange)
+    #     if(length(unique(uniq_person_age != xax))==2){
+    #         diffValue <- setdiff(xax, uniq_person_age)
+    #         addDataframe <- data.frame('ageRange' = diffValue, 'genderConceptId' = rep(8532,length(diffValue)) , 'ratio' = rep(0,length(diffValue)))
+    #         addDataframe2 <- data.frame('ageRange' = diffValue, 'genderConceptId' = rep(8507,length(diffValue)) , 'ratio' = rep(0,length(diffValue)) )
+    #         tempDataframe <- rbind(addDataframe2,addDataframe)
+    #         x[[i]]$persontbl_min_age <- rbind(person_minage, tempDataframe)
+    #     }
+    # })
+    # 
+    
+    rdsList <- list(rds[[1]]$persontbl_min_age,rds[[2]]$persontbl_min_age)
+    
+    rdsList <- list()
+    for(i in 1:length(rds)){
+        rdsList[[i]] <- rds[[i]]$persontbl_min_age
+    }
+    
+    
+    # names(rdsList) <- rep('persontbl_min_age',2)
+    tempList <- lapply(rdsList, function(x){
+        person_minage <- x
+        uniq_person_age <- unique(person_minage$ageRange)
+        if(length(unique(uniq_person_age != xax))==2){
+            diffValue <- setdiff(xax, uniq_person_age)
+            addDataframe <- data.frame('ageRange' = diffValue, 'genderConceptId' = rep(8532,length(diffValue)) , 'ratio' = rep(0,length(diffValue)))
+            addDataframe2 <- data.frame('ageRange' = diffValue, 'genderConceptId' = rep(8507,length(diffValue)) , 'ratio' = rep(0,length(diffValue)) )
+            tempDataframe <- rbind(addDataframe2,addDataframe)
+            x <- rbind(person_minage, tempDataframe)
+        }
+        else{
+            x <- x
+        }
+    })
+    
+    for(i in 1:length(rds)){
+        rds[[i]]$persontbl_min_age <- tempList[[i]]
+    }
+
+    rds[[2]]$persontbl_min_age
+    
     x_len <- length(xax)
     y_male <- rds[[1]]$persontbl_min_age[rds[[1]]$persontbl_min_age$genderConceptId == '8507',]$ratio
     y_female <- rds[[1]]$persontbl_min_age[rds[[1]]$persontbl_min_age$genderConceptId == '8532',]$ratio
     xform <- list(categoryorder = "array",
                   categoryarray = xax)
+    
     plot1 <- plot_ly(data = data.frame(xax, y_male,y_female),
                      x=xax,
                      y=y_male,
