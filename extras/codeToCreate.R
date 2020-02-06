@@ -1,42 +1,42 @@
 # CodeToRun
-#usethis::edit_r_environ() ## edit ID/PW
+usethis::edit_r_environ() ## edit ID/PW
 ### work_dir <- readline(prompt="Enter work_dir: ")
-##16í˜¸ AUSOM-----------------------------------------------------------------------------------------
+##16?˜¸ AUSOM-----------------------------------------------------------------------------------------
 connectionDetails <- DatabaseConnector::createConnectionDetails(dbms = 'sql server',
                                                                 server = Sys.getenv("server_ip_16"),
                                                                 user = Sys.getenv("chungsu_ID"),
-                                                                password = Sys.getenv("chungsu_pW"),
+                                                                password = Sys.getenv("chungsu_PW"),
                                                                 schema = Sys.getenv("AUSOMv5_3"))
 create_rds(connectionDetails)
-##16í˜¸ AUSOM-----------------------------------------------------------------------------------------
+##16?˜¸ AUSOM-----------------------------------------------------------------------------------------
 connectionDetails <- DatabaseConnector::createConnectionDetails(dbms = 'sql server',
                                                                 server = Sys.getenv("server_ip_16"),
                                                                 user = Sys.getenv("chungsu_ID"),
-                                                                password = Sys.getenv("chungsu_pW"),
+                                                                password = Sys.getenv("chungsu_PW"),
                                                                 schema = Sys.getenv("AUSOMv5_3_1"))
 create_rds(connectionDetails)
-##17í˜¸ CDMPv1----------------------------------------------------------------------------------------
+##17?˜¸ CDMPv1----------------------------------------------------------------------------------------
 connectionDetails <- DatabaseConnector::createConnectionDetails(dbms = 'sql server',
                                                                 server = Sys.getenv("server_ip_17"),
                                                                 user = Sys.getenv("USER_ID"),
                                                                 password = Sys.getenv("PASSWORD"),
                                                                 schema = Sys.getenv("CDMPv1"))
 create_rds(connectionDetails)
-##17í˜¸ Dolphin_CDM-----------------------------------------------------------------------------------
+##17?˜¸ Dolphin_CDM-----------------------------------------------------------------------------------
 connectionDetails <- DatabaseConnector::createConnectionDetails(dbms = 'sql server',
                                                                 server = Sys.getenv("server_ip_17"),
                                                                 user = Sys.getenv("USER_ID"),
                                                                 password = Sys.getenv("PASSWORD"),
                                                                 schema = Sys.getenv("Dolphin_CDM"))
 create_rds(connectionDetails)
-##17í˜¸ synPUF_CDM------------------------------------------------------------------------------------
+##17?˜¸ synPUF_CDM------------------------------------------------------------------------------------
 connectionDetails <- DatabaseConnector::createConnectionDetails(dbms = 'sql server',
                                                                 server = Sys.getenv("server_ip_17"),
                                                                 user = Sys.getenv("USER_ID"),
                                                                 password = Sys.getenv("PASSWORD"),
                                                                 schema = Sys.getenv("synPUF_CDM"))
 create_rds(connectionDetails)
-##17í˜¸ ICARUS----------------------------------------------------------------------------------------
+##17?˜¸ ICARUS----------------------------------------------------------------------------------------
 connectionDetails <- DatabaseConnector::createConnectionDetails(dbms = 'sql server',
                                                                 server = Sys.getenv("server_ip_17"),
                                                                 user = Sys.getenv("USER_ID"),
@@ -44,5 +44,5 @@ connectionDetails <- DatabaseConnector::createConnectionDetails(dbms = 'sql serv
                                                                 schema = Sys.getenv("ICARUS"))
 create_rds(connectionDetails)
 
-gemini::gemini(dbCount=2)
+gemini::gemini(dbCount=10)
 
