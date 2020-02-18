@@ -1,6 +1,6 @@
 #' Create rds file
 #'
-#' This function for creating server info files and trigger of create rds files
+#' This function for creating server info files and trigger of ssssssssssseate rds files
 #' @keywords gemini
 #' @export
 #'
@@ -8,16 +8,18 @@ create_rds<- function(){
 
     cat("Set directory to create rds files.\n")
     # Change working directory for confirming user to create where the files
-    gemini::path_set()
+    ######gemini::path_set()######
+    setwd("D:\\Khistory\\GEMINI\\cdm")
     gemini::check.packages("DatabaseConnector")
     gemini::check.packages("SqlRender")
 
     # Main Code
-    if(length(list.files(pattern = "server_info\\w*.cfg$"))>0)
+    cfg_files=list.files(pattern = "server_info\\w*.cfg$")
+    if(length(cfg_files)>0)
         {
         recon <- select.list(c("y","n"), title = "Do you want to connect previous server?")
         if(recon == 'y'){
-            pick_server <- select.list(list.files(pattern = "server_info\\w*.cfg$"), title = "Select previous server info flie.")
+            pick_server <- select.list(cfg_files, title = "Select previous server info flie.")
             cat("Try to connecting DB server...\n")
             gemini::connect_DB(pick_server)
             }
@@ -28,11 +30,11 @@ create_rds<- function(){
             gemini::connect_DB()
             }
         else{
-        write(create_server_info(),"server_info.cfg")
-        cat("Try to connecting DB server...\n")
-        gemini::connect_DB()
+            write(create_server_info(),"server_info.cfg")
+            cat("Try to connecting DB server...\n")
+            gemini::connect_DB()
+            }
         }
-    }
     gemini::save_data()
     rm(list = ls())
 }

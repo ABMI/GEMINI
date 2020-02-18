@@ -13,7 +13,8 @@ gemini <- function(){
     check.packages("rmarkdown")
 
     cat("Choose where 'Standard RDS' folder exist.\n")
-    gemini::path_set()
+    ######gemini::path_set()######
+    setwd("D:\\Khistory\\GEMINI\\cdm")
     gemini::create_folder() #Create folder for avoid error "No directory"
 
     if(length(list.files(paste0(getwd(), "/Standard RDS/"), pattern = "*.zip$"))>0){
