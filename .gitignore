@@ -2,7 +2,7 @@
 # 제외할 확장자#
 *.txt
 *.RData
-*.Rproj
+#*.Rproj
 *.swp
 *.html
 *.cfg
