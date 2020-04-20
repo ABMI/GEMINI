@@ -4,7 +4,7 @@ SELECT 'table person' as attribute_name,
             FROM @cdm_database_schema.@tbl_name;
 
 --visittbl_visit_concept
-SELECT @att_name as concept_id, (SELECT CONCEPT_NAME FROM @cdm_database_schema.concept where concept_id = @att_name) as attribute_name,
+SELECT @att_name as concept_id, (SELECT distinct CONCEPT_NAME FROM @cdm_database_schema.concept where concept_id = @att_name) as attribute_name,
             round(count(@att_name)/CAST((SELECT count(*) FROM @cdm_database_schema.@tbl_name)AS FLOAT)*100,1) as ratio
             FROM @cdm_database_schema.@tbl_name
             GROUP BY @att_name;
@@ -35,7 +35,7 @@ select	YEAR(visit_end_date) as visit_year, count(person_id) as person_count FROM
 GROUP BY YEAR(visit_end_date);			
 			
 --visittbl_type_concept
-SELECT @att_name as concept_id, (SELECT CONCEPT_NAME FROM @cdm_database_schema.concept where concept_id = @att_name) as attribute_name,
+SELECT @att_name as concept_id, (SELECT distinct CONCEPT_NAME FROM @cdm_database_schema.concept where concept_id = @att_name) as attribute_name,
             round(count(@att_name)/CAST((SELECT count(*) FROM @cdm_database_schema.@tbl_name)AS FLOAT)*100,1) as ratio
             FROM @cdm_database_schema.@tbl_name
             GROUP BY @att_name;
@@ -46,19 +46,19 @@ select '@att_name' as attribute_name ,count(distinct @att_name) as attribute_cou
             from @cdm_database_schema.@tbl_name;
 
 --visittbl_source_concept
-SELECT @att_name as concept_id, (SELECT CONCEPT_NAME FROM @cdm_database_schema.concept where concept_id = @att_name) as attribute_name,
+SELECT @att_name as concept_id, (SELECT distinct CONCEPT_NAME FROM @cdm_database_schema.concept where concept_id = @att_name) as attribute_name,
             round(count(@att_name)/CAST((SELECT count(*) FROM @cdm_database_schema.@tbl_name)AS FLOAT)*100,1) as ratio
             FROM @cdm_database_schema.@tbl_name
             GROUP BY @att_name;
 			
 --visittbl_admitting_source
-SELECT @att_name as concept_id, (SELECT CONCEPT_NAME FROM @cdm_database_schema.concept where concept_id = @att_name) as attribute_name,
+SELECT @att_name as concept_id, (SELECT distinct CONCEPT_NAME FROM @cdm_database_schema.concept where concept_id = @att_name) as attribute_name,
             round(count(@att_name)/CAST((SELECT count(*) FROM @cdm_database_schema.@tbl_name)AS FLOAT)*100,1) as ratio
             FROM @cdm_database_schema.@tbl_name
             GROUP BY @att_name;
 			
 --visittbl_discharge
-SELECT @att_name as concept_id, (SELECT CONCEPT_NAME FROM @cdm_database_schema.concept where concept_id = @att_name) as attribute_name,
+SELECT @att_name as concept_id, (SELECT distinct CONCEPT_NAME FROM @cdm_database_schema.concept where concept_id = @att_name) as attribute_name,
             round(count(@att_name)/CAST((SELECT count(*) FROM @cdm_database_schema.@tbl_name)AS FLOAT)*100,1) as ratio
             FROM @cdm_database_schema.@tbl_name
             GROUP BY @att_name;

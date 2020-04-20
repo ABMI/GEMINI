@@ -4,7 +4,7 @@ SELECT 'table person' as attribute_name,
             FROM @cdm_database_schema.@tbl_name;			
 
 --persontbl_gender
-SELECT (SELECT CONCEPT_NAME FROM @cdm_database_schema.concept where concept_id = @att_name) as attribute_name,
+SELECT (SELECT distinct CONCEPT_NAME FROM @cdm_database_schema.concept where concept_id = @att_name) as attribute_name,
                 round(count(distinct person_id)/CAST((SELECT count(distinct person_id)
                 FROM @cdm_database_schema.@tbl_name)AS float)*100,1) as ratio
                 FROM @cdm_database_schema.@tbl_name
@@ -39,13 +39,13 @@ SELECT AGE_RANGE, gender_concept_id, ROUND(person_count*100/CAST((SELECT SUM(per
 ORDER BY CAST(LEFT(AGE_RANGE,CHARINDEX('~',AGE_RANGE)-1)AS INT) ASC ,gender_concept_id;
 
 --persontbl_race
-SELECT @att_name as concept_id, (SELECT CONCEPT_NAME FROM @cdm_database_schema.concept where concept_id = @att_name) as attribute_name,
+SELECT @att_name as concept_id, (SELECT distinct CONCEPT_NAME FROM @cdm_database_schema.concept where concept_id = @att_name) as attribute_name,
             round(count(@att_name)/CAST((SELECT count(*) FROM @cdm_database_schema.@tbl_name) AS float)*100,1) as ratio
             FROM @cdm_database_schema.@tbl_name
             GROUP BY @att_name;
 
 --persontbl_ethnicity
-SELECT @att_name as concept_id, (SELECT CONCEPT_NAME FROM @cdm_database_schema.concept where concept_id = @att_name) as attribute_name,
+SELECT @att_name as concept_id, (SELECT distinct CONCEPT_NAME FROM @cdm_database_schema.concept where concept_id = @att_name) as attribute_name,
             round(count(@att_name)/CAST((SELECT count(*) FROM @cdm_database_schema.@tbl_name)AS float)*100,1) as ratio
             FROM @cdm_database_schema.@tbl_name
             GROUP BY @att_name;
