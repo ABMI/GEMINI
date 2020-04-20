@@ -75,7 +75,7 @@ person_data <- function(connection){
     tryCatch(persontbl_record <- queryRender(person_record_sql,"PERSON",conn = connection)
              ,
              error = function(e) {
-                 persontbl_record <- NULL
+                 persontbl_record <- NA
              }
     )
     progress <- prg_plus(progressBar,progress)
@@ -87,7 +87,7 @@ person_data <- function(connection){
     tryCatch(persontbl_person_ratio <- queryRender(person_sql[1],"PERSON",conn = connection)
              ,
              error = function(e) {
-                 persontbl_person_ratio <- NULL
+                 persontbl_person_ratio <- NA
              }
     )
     progress <- prg_plus(progressBar,progress)
@@ -99,7 +99,7 @@ person_data <- function(connection){
         persontbl_gender <- queryRender(person_sql[2],"PERSON","gender_concept_id",conn = connection)
     },
     error = function(e) {
-        persontbl_gender <- NULL
+        persontbl_gender <- NA
     }
     )
     progress <- prg_plus(progressBar,progress)
@@ -117,7 +117,7 @@ person_data <- function(connection){
         persontbl_min_age <- zeroToDecimal(persontbl_min_age)
 
     }, error = function(e) {
-        persontbl_min_age <- NULL
+        persontbl_min_age <- NA
     })
     progress <- prg_plus(progressBar,progress)
     ################################################################################
@@ -134,7 +134,7 @@ person_data <- function(connection){
         female_max_ratio <- persontbl_max_age$ratio[persontbl_max_age$genderConceptId == "8532"]
         x_max_lbl <- persontbl_max_age$ageRange[persontbl_max_age$genderConceptId == "8507"]
     }, error = function(e) {
-        persontbl_max_age <- NULL
+        persontbl_max_age <- NA
     })
     progress <- prg_plus(progressBar,progress)
     ################################################################################
@@ -143,7 +143,7 @@ person_data <- function(connection){
     tryCatch(persontbl_race <- queryRender(person_sql[5],"person", "race_concept_id",conn = connection)
              ,
              error = function(e) {
-                 persontbl_race <- NULL
+                 persontbl_race <- NA
              }
     )
     progress <- prg_plus(progressBar,progress)
@@ -153,7 +153,7 @@ person_data <- function(connection){
     tryCatch(persontbl_ethnicity <- queryRender(person_sql[6],"person", "ethnicity_concept_id",conn = connection)
              ,
              error = function(e) {
-                 persontbl_ethnicity <- NULL
+                 persontbl_ethnicity <- NA
              }
     )
     progress <- prg_plus(progressBar,progress)
@@ -164,7 +164,7 @@ person_data <- function(connection){
     tryCatch(persontbl_location <- queryRender(person_sql[7],"person", "location_id",conn = connection)
              ,
              error = function(e) {
-                 persontbl_location <- NULL
+                 persontbl_location <- NA
              }
     )
     progress <- prg_plus(progressBar,progress)
@@ -174,7 +174,7 @@ person_data <- function(connection){
     tryCatch(persontbl_provider <- queryRender(person_sql[8],"person", "provider_id",conn = connection)
              ,
              error = function(e) {
-                 persontbl_provider <- NULL
+                 persontbl_provider <- NA
              }
     )
     progress <- prg_plus(progressBar,progress)
@@ -184,7 +184,7 @@ person_data <- function(connection){
     tryCatch(
         persontbl_care_site <- queryRender(person_sql[9],conn = connection)
         , error = function(e) {
-            persontbl_care_site <- NULL
+            persontbl_care_site <- NA
         })
 
     progress <- prg_plus(progressBar,progress)
@@ -218,7 +218,7 @@ death_data <- function(connection){
     tryCatch({
         deathtbl_check <- queryRender(death_sql[1],conn = connection)
     }, error = function(e) {
-        deathtbl_check <- NULL
+        deathtbl_check <- NA
     })
     progress <- prg_plus(progressBar,progress)
     ################################################################################
@@ -227,7 +227,7 @@ death_data <- function(connection){
     tryCatch({
         deathtbl_type <- queryRender(death_sql[2],conn = connection)
     }, error = function(e) {
-        deathtbl_type <- NULL
+        deathtbl_type <- NA
     })
     progress <- prg_plus(progressBar,progress)
     death_tbl <- list(deathtbl_check,deathtbl_type)
@@ -263,7 +263,7 @@ visit_occurrence_data <- function(connection){
     tryCatch(visittbl_record <- queryRender(visit_record_sql,"visit_occurrence",conn = connection)
              ,
              error = function(e) {
-                 visittbl_record <- NULL
+                 visittbl_record <- NA
              }
     )
     progress <- prg_plus(progressBar,progress)
@@ -273,7 +273,7 @@ visit_occurrence_data <- function(connection){
     tryCatch(visittbl_person_ratio <- queryRender(visit_sql[1],"visit_occurrence",conn = connection)
              ,
              error = function(e) {
-                 visittbl_person_ratio <- NULL
+                 visittbl_person_ratio <- NA
              }
     )
     progress <- prg_plus(progressBar,progress)
@@ -283,7 +283,7 @@ visit_occurrence_data <- function(connection){
     tryCatch(visittbl_visit_concept <- queryRender(visit_sql[2],"visit_occurrence", "visit_concept_id",conn = connection)
              ,
              error = function(e) {
-                 visittbl_visit_concept <- NULL
+                 visittbl_visit_concept <- NA
              }
     )
     progress <- prg_plus(progressBar,progress)
@@ -293,7 +293,7 @@ visit_occurrence_data <- function(connection){
     tryCatch(visittbl_start <- queryRender(visit_sql[3],"visit_occurrence", "visit_start_date",conn = connection)
              ,
              error = function(e) {
-                 visittbl_start <- NULL
+                 visittbl_start <- NA
              }
     )
     progress <- prg_plus(progressBar,progress)
@@ -303,7 +303,7 @@ visit_occurrence_data <- function(connection){
     tryCatch(visittbl_end <- queryRender(visit_sql[4],"visit_occurrence", "visit_end_date",conn = connection)
              ,
              error = function(e) {
-                 visittbl_end <- NULL
+                 visittbl_end <- NA
              }
     )
     progress <- prg_plus(progressBar,progress)
@@ -314,7 +314,7 @@ visit_occurrence_data <- function(connection){
                                                startName = "visit_start_date", endName = "visit_end_date",conn = connection)
              ,
              error = function(e) {
-                 visittbl_diff_date <- NULL
+                 visittbl_diff_date <- NA
              }
     )
     progress <- prg_plus(progressBar,progress)
@@ -326,7 +326,7 @@ visit_occurrence_data <- function(connection){
     }
     ,
     error = function(e) {
-        visittbl_count <- NULL
+        visittbl_count <- NA
     }
     )
     progress <- prg_plus(progressBar,progress)
@@ -336,7 +336,7 @@ visit_occurrence_data <- function(connection){
     tryCatch(visittbl_type_concept <- queryRender(visit_sql[7],"visit_occurrence", "visit_type_concept_id",conn = connection)
              ,
              error = function(e) {
-                 visittbl_type_concept <- NULL
+                 visittbl_type_concept <- NA
              }
     )
     progress <- prg_plus(progressBar,progress)
@@ -346,7 +346,7 @@ visit_occurrence_data <- function(connection){
     tryCatch(visittbl_care_site <- queryRender(visit_sql[8],"visit_occurrence", "care_site_id",conn = connection)
              ,
              error = function(e) {
-                 visittbl_care_site <- NULL
+                 visittbl_care_site <- NA
              }
     )
     progress <- prg_plus(progressBar,progress)
@@ -356,7 +356,7 @@ visit_occurrence_data <- function(connection){
     tryCatch(visittbl_source_concept <- queryRender(visit_sql[9],"visit_occurrence", "visit_source_concept_id",conn = connection)
              ,
              error = function(e) {
-                 visittbl_source_concept <- NULL
+                 visittbl_source_concept <- NA
              }
     )
     progress <- prg_plus(progressBar,progress)
@@ -367,7 +367,7 @@ visit_occurrence_data <- function(connection){
     tryCatch(visittbl_admitting_source <- queryRender(visit_sql[10],"visit_occurrence", "admitting_source_concept_id",conn = connection)
              ,
              error = function(e) {
-                 visittbl_admitting_source <- NULL
+                 visittbl_admitting_source <- NA
              }
     )
     progress <- prg_plus(progressBar,progress)
@@ -378,7 +378,7 @@ visit_occurrence_data <- function(connection){
     tryCatch(visittbl_discharge <- queryRender(visit_sql[11],"visit_occurrence", "discharge_to_concept_id",conn = connection)
              ,
              error = function(e) {
-                 visittbl_discharge <- NULL
+                 visittbl_discharge <- NA
 
              })
     progress <- prg_plus(progressBar,progress)
@@ -390,7 +390,7 @@ visit_occurrence_data <- function(connection){
                                                comparedAttName = "visit_occurrence_id",conn = connection)
              ,
              error = function(e) {
-                 visittbl_preceding <- NULL
+                 visittbl_preceding <- NA
              })
     progress <- prg_plus(progressBar,progress)
     visit_tbl <- list(visittbl_record, visittbl_person_ratio, visittbl_visit_concept, visittbl_start, visittbl_end, visittbl_diff_date, visittbl_count,
@@ -426,7 +426,7 @@ condition_occurrence_data <- function(connection){
     tryCatch(conditiontbl_record <- queryRender(condition_record_sql,"condition_occurrence",conn = connection)
              ,
              error = function(e) {
-                 conditiontbl_record <- NULL
+                 conditiontbl_record <- NA
              }
     )
     progress <- prg_plus(progressBar,progress)
@@ -436,7 +436,7 @@ condition_occurrence_data <- function(connection){
     tryCatch(conditiontbl_person_ratio <- queryRender(condition_sql[1],"condition_occurrence",conn = connection)
              ,
              error = function(e) {
-                 conditiontbl_person_ratio <- NULL
+                 conditiontbl_person_ratio <- NA
              }
     )
     progress <- prg_plus(progressBar,progress)
@@ -446,7 +446,7 @@ condition_occurrence_data <- function(connection){
     tryCatch(conditiontbl_start <- queryRender(condition_sql[2],"condition_occurrence", "condition_start_date",conn = connection)
              ,
              error = function(e) {
-                 conditiontbl_start <- NULL
+                 conditiontbl_start <- NA
              }
     )
     progress <- prg_plus(progressBar,progress)
@@ -456,7 +456,7 @@ condition_occurrence_data <- function(connection){
     tryCatch(conditiontbl_end <- queryRender(condition_sql[3],"condition_occurrence", "condition_end_date",conn = connection)
              ,
              error = function(e) {
-                 conditiontbl_end <- NULL
+                 conditiontbl_end <- NA
              }
     )
     progress <- prg_plus(progressBar,progress)
@@ -467,7 +467,7 @@ condition_occurrence_data <- function(connection){
                                                    startName = "condition_start_date", endName = "condition_end_date",conn = connection)
              ,
              error = function(e) {
-                 conditiontbl_diff_date <- NULL
+                 conditiontbl_diff_date <- NA
              }
     )
     progress <- prg_plus(progressBar,progress)
@@ -477,7 +477,7 @@ condition_occurrence_data <- function(connection){
     tryCatch(conditiontbl_type_concept <- queryRender(condition_sql[5],"condition_occurrence", "condition_type_concept_id",conn = connection)
              ,
              error = function(e) {
-                 conditiontbl_type_concept <- NULL
+                 conditiontbl_type_concept <- NA
              }
     )
     progress <- prg_plus(progressBar,progress)
@@ -487,7 +487,7 @@ condition_occurrence_data <- function(connection){
     tryCatch({
         conditiontbl_stop <- queryRender(condition_sql[6],"condition_occurrence",conn = connection)
     }, error = function(e) {
-        conditiontbl_stop <- NULL
+        conditiontbl_stop <- NA
     })
     progress <- prg_plus(progressBar,progress)
     ################################################################################
@@ -497,7 +497,7 @@ condition_occurrence_data <- function(connection){
         conditiontbl_visit_occurrence <- queryRender(condition_sql[7],"condition_occurrence", "visit_occurrence_id",
                                                      comparedAttName = "condition_occurrence_id",conn = connection)
     }, error = function(e) {
-        conditiontbl_visit_occurrence <- NULL
+        conditiontbl_visit_occurrence <- NA
     })
     progress <- prg_plus(progressBar,progress)
     ################################################################################
@@ -508,7 +508,7 @@ condition_occurrence_data <- function(connection){
         conditiontbl_visit_detail <- queryRender(condition_sql[8],"condition_occurrence", "visit_detail_id",
                                                  comparedAttName = "condition_occurrence_id",conn = connection)
     }, error = function(e) {
-        conditiontbl_visit_detail <- NULL
+        conditiontbl_visit_detail <- NA
     })
     progress <- prg_plus(progressBar,progress)
     condition_tbl <- list(conditiontbl_record, conditiontbl_person_ratio, conditiontbl_diff_date, conditiontbl_start, conditiontbl_end,
@@ -545,7 +545,7 @@ drug_exposure_data <- function(connection){
     tryCatch(drug_exptbl_record <- queryRender(drug_exp_record_sql,"drug_exposure",conn = connection)
              ,
              error = function(e) {
-                 drug_exptbl_record <- NULL
+                 drug_exptbl_record <- NA
              }
     )
     progress <- prg_plus(progressBar,progress)
@@ -555,7 +555,7 @@ drug_exposure_data <- function(connection){
     tryCatch(drug_exptbl_person_ratio <- queryRender(drug_exp_sql[1],"drug_exposure",conn = connection)
              ,
              error = function(e) {
-                 drug_exptbl_person_ratio <- NULL
+                 drug_exptbl_person_ratio <- NA
              }
     )
     progress <- prg_plus(progressBar,progress)
@@ -565,7 +565,7 @@ drug_exposure_data <- function(connection){
     tryCatch(drug_exptbl_start <- queryRender(drug_exp_sql[2],"drug_exposure", "drug_exposure_start_date",conn = connection)
              ,
              error = function(e) {
-                 drug_exptbl_start <- NULL
+                 drug_exptbl_start <- NA
              }
     )
     progress <- prg_plus(progressBar,progress)
@@ -575,7 +575,7 @@ drug_exposure_data <- function(connection){
     tryCatch(drug_exptbl_end <- queryRender(drug_exp_sql[3],"drug_exposure", "drug_exposure_end_date",conn = connection)
              ,
              error = function(e) {
-                 drug_exptbl_end <- NULL
+                 drug_exptbl_end <- NA
              }
     )
     progress <- prg_plus(progressBar,progress)
@@ -586,7 +586,7 @@ drug_exposure_data <- function(connection){
         drug_exptbl_diff_date <- queryRender(drug_exp_sql[4],"drug_exposure",
                                              startName = "drug_exposure_start_date", endName = "drug_exposure_end_date",conn = connection)
     }, error = function(e) {
-        drug_exptbl_diff_date <- NULL
+        drug_exptbl_diff_date <- NA
     })
     progress <- prg_plus(progressBar,progress)
     ################################################################################
@@ -595,7 +595,7 @@ drug_exposure_data <- function(connection){
     tryCatch({
         drug_exptbl_type_concept <- queryRender(drug_exp_sql[5],"drug_exposure", "drug_type_concept_id",conn = connection)
     }, error = function(e) {
-        drug_exptbl_type_concept <- NULL
+        drug_exptbl_type_concept <- NA
     })
     progress <- prg_plus(progressBar,progress)
     ################################################################################
@@ -604,7 +604,7 @@ drug_exposure_data <- function(connection){
     tryCatch({
         drug_exptbl_stop <- queryRender(drug_exp_sql[6],"drug_exposure",conn = connection)
     }, error = function(e) {
-        drug_exptbl_stop <- NULL
+        drug_exptbl_stop <- NA
     })
     progress <- prg_plus(progressBar,progress)
     ################################################################################
@@ -613,7 +613,7 @@ drug_exposure_data <- function(connection){
     tryCatch({
         drug_exptbl_route <- queryRender(drug_exp_sql[7],"drug_exposure", "route_concept_id",conn = connection)
     }, error = function(e) {
-        drug_exptbl_route <- NULL
+        drug_exptbl_route <- NA
     })
     progress <- prg_plus(progressBar,progress)
     ################################################################################
@@ -623,7 +623,7 @@ drug_exposure_data <- function(connection){
         drug_exptbl_visit_occurrence <- queryRender(drug_exp_sql[8],"drug_exposure", "visit_occurrence_id",
                                                     comparedAttName = "drug_exposure_id",conn = connection)
     }, error = function(e) {
-        drug_exptbl_visit_occurrence <- NULL
+        drug_exptbl_visit_occurrence <- NA
     })
     progress <- prg_plus(progressBar,progress)
     ################################################################################
@@ -635,7 +635,7 @@ drug_exposure_data <- function(connection){
         drug_exptbl_visit_detail <- queryRender(drug_exp_sql[9],"drug_exposure", "visit_detail_id",
                                                 comparedAttName = "drug_exposure_id",conn = connection)
     }, error = function(e) {
-        drug_exptbl_visit_detail <- NULL
+        drug_exptbl_visit_detail <- NA
     })
     progress <- prg_plus(progressBar,progress)
     drug_exptbl <- list(drug_exptbl_record, drug_exptbl_person_ratio, drug_exptbl_diff_date, drug_exptbl_start, drug_exptbl_end, drug_exptbl_type_concept,
@@ -680,7 +680,7 @@ drug_era_data <- function(connection){
     tryCatch(drug_eratbl_record <- queryRender(drug_era_record_sql,"drug_era",conn = connection)
              ,
              error = function(e) {
-                 drug_eratbl_record <- NULL
+                 drug_eratbl_record <- NA
              }
     )
     progress <- prg_plus(progressBar,progress)
@@ -690,7 +690,7 @@ drug_era_data <- function(connection){
     tryCatch(drug_eratbl_person_ratio <- queryRender(drug_era_sql[1],"drug_era",conn = connection)
              ,
              error = function(e) {
-                 drug_eratbl_person_ratio <- NULL
+                 drug_eratbl_person_ratio <- NA
              }
     )
     progress <- prg_plus(progressBar,progress)
@@ -700,7 +700,7 @@ drug_era_data <- function(connection){
     tryCatch(drug_eratbl_start <- queryRender(drug_era_sql[2],"drug_era", "drug_era_start_date",conn = connection)
              ,
              error = function(e) {
-                 drug_eratbl_start <- NULL
+                 drug_eratbl_start <- NA
              }
     )
     progress <- prg_plus(progressBar,progress)
@@ -710,7 +710,7 @@ drug_era_data <- function(connection){
     tryCatch(drug_eratbl_end <- queryRender(drug_era_sql[3],"drug_era", "drug_era_end_date",conn = connection)
              ,
              error = function(e) {
-                 drug_eratbl_end <- NULL
+                 drug_eratbl_end <- NA
              }
     )
     progress <- prg_plus(progressBar,progress)
@@ -721,7 +721,7 @@ drug_era_data <- function(connection){
         drug_eratbl_diff_date <- queryRender(drug_era_sql[4],"drug_era",
                                              startName = "drug_era_start_date", endName = "drug_era_end_date",conn = connection)
     }, error = function(e) {
-        drug_eratbl_diff_date <- NULL
+        drug_eratbl_diff_date <- NA
     })
     progress <- prg_plus(progressBar,progress)
     ################################################################################
@@ -731,7 +731,7 @@ drug_era_data <- function(connection){
     tryCatch({
         drug_eratbl_exp_count <- queryRender(drug_era_sql[5],"drug_era", "drug_exposure_count",conn = connection)
     }, error = function(e) {
-        drug_eratbl_exp_count <- NULL
+        drug_eratbl_exp_count <- NA
     })
     progress <- prg_plus(progressBar,progress)
     ################################################################################
@@ -741,7 +741,7 @@ drug_era_data <- function(connection){
     tryCatch({
         drug_eratbl_gap_days <- queryRender(drug_era_sql[6],"drug_era",conn = connection)
     }, error = function(e) {
-        drug_eratbl_gap_days <- NULL
+        drug_eratbl_gap_days <- NA
     })
     progress <- prg_plus(progressBar,progress)
     drug_eratbl <- list(drug_eratbl_record, drug_eratbl_person_ratio, drug_eratbl_diff_date, drug_eratbl_start, drug_eratbl_end,
