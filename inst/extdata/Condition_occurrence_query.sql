@@ -25,7 +25,7 @@ SELECT DATEDIFF(day, @start_name, @end_name) as day_diff, count(person_id) as pe
 			ORDER BY DATEDIFF(day, @start_name, @end_name) ASC;
 
 --conditiontbl_type_concept
-SELECT @att_name as concept_id, (SELECT CONCEPT_NAME FROM @cdm_database_schema.concept where concept_id = @att_name) as attribute_name,
+SELECT @att_name as concept_id, (SELECT distinct CONCEPT_NAME FROM @cdm_database_schema.concept where concept_id = @att_name) as attribute_name,
             round(count(@att_name)/cast((SELECT count(*) FROM @cdm_database_schema.@tbl_name)AS float)*100,1) as ratio
             FROM @cdm_database_schema.@tbl_name
             GROUP BY @att_name;
